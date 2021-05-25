@@ -1,1 +1,23 @@
-<p>band works!</p>
+<app-header></app-header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 m-2">
+            <mat-card>
+                <h1>{{ rockBandService.rockBand.name }} <button type="button" mat-icon-button color="accent"><mat-icon>create</mat-icon></button></h1>
+                <h3>Fundada en {{ rockBandService.rockBand.year }}</h3>
+                <div><img class="photoBand" [src]="rockBandService.rockBand.photoUrl" /></div>
+                <h3><strong>Miembros</strong></h3>
+                <ul *ngFor="let member of rockBandService.rockBand.memberList">
+                    <li>{{ member.name }} ({{member.instrument}})</li>
+                </ul>
+                <h3><strong>Historia</strong></h3>
+                <p style="text-align: justify;">{{ rockBandService.rockBand.history }}</p>
+                <h3><strong>Videos</strong></h3>
+                <ul *ngFor="let video of rockBandService.rockBand.videos">
+                    <li style="list-style: none;"><a mat-raised-button color="primary" href="{{video.url}}">{{ video.title }}</a></li>
+                </ul>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -83,10 +83,15 @@ export class AddComponent implements OnInit, AfterViewInit {
     if(!f.valid)
       return;
 
-    if(f.value.url='')
-      this.url = 'http://www.sinproblema.net/img/rockband.png'; 
+    if(f.value.url=='')
+      this.url = 'http://www.sinproblema.net/img/rockband.png';
+    else
+      this.url = f.value.url;
+    
+    let idband:string = String(f.value.name).replace(' ','').trim().toLowerCase().substr(0,4)+Math.round(Math.random()*899+100);
     let newBand:RockBand = new RockBand(f.value.name, this.memberList, f.value.history, f.value.year, this.url, this.videoList);
-    console.log(newBand);
+    newBand.idband = idband;
+    
     if(!this.rockBandService.rockBandList.some(e => e.name == f.value.name)) {
       this.rockBandService.newRockBand(newBand);
       this.nameAdded = f.value.name;
@@ -95,6 +100,7 @@ export class AddComponent implements OnInit, AfterViewInit {
       this.videoList = [];
       this.bandAdded = true;
     } else if(!this.bandAdded) {
+      this.nameAdded = f.value.name;
       this.errorDup = true;
     }
   }
@@ -107,8 +113,11 @@ export class AddComponent implements OnInit, AfterViewInit {
     return this.videoList.some(e => e.title == this.title);
   }
 
-  switchVideos() {
-    this.addVid = true;
+  switchVideos() { //No se por qué el ternario no funciona bien
+    if(this.addVid)
+      this.addVid = false;
+    else
+      this.addVid = true;
   }
 
 }

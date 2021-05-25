@@ -6,10 +6,18 @@
     </button>
 </div>
 
+<div *ngIf="errorDup" class="alert alert-danger alert-dismissible fade show" role="alert">
+    ¡{{ nameAdded }}, ya estaba en la lista. Si quieres editarla, puedes hacerlo pulsando sobre la banda y seleccionando "Editar".
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-4 m-2">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 m-2">
             <mat-card>
+                <h2>Añadir nueva banda</h2>
                 <form class="d-flex flex-column" #newBandForm="ngForm" (ngSubmit)="onNewBand(newBandForm)">
                     <mat-form-field appearance="fill">
                         <mat-label>Nombre de la banda: </mat-label>
@@ -25,7 +33,7 @@
                                   </button></li>
                             </ul>
                         </div>
-                        <div>
+                        <div class="d-flex flex-column justify-content-end">
                             <mat-form-field appearance="fill">
                                 <mat-label>Nombre: </mat-label>
                                 <input type="text" name="memberName" matInput [(ngModel)]="memberName" />
@@ -40,7 +48,7 @@
                     </mat-card>
                     <mat-form-field appearance="fill">
                         <mat-label>Historia</mat-label>
-                        <textarea matInput name="history" ngModel required #history="ngModel"></textarea>
+                        <textarea matInput name="history" ngModel required #history="ngModel" rows="4"></textarea>
                         <mat-error *ngIf="history.invalid">Por favor, introduce la historia de la banda</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
@@ -52,7 +60,8 @@
                         <mat-label>Url de la foto: </mat-label>
                         <input type="text" matInput name="url" ngModel #url="ngModel" />
                     </mat-form-field>
-                    <button type="button" mat-raised-button color="primary" (click)="switchVideos()">Añadir Video >></button>
+                    <button *ngIf="!addVid" type="button" mat-raised-button color="primary" (click)="switchVideos()">Añadir Videos >></button>
+                    <button *ngIf="addVid" type="button" mat-raised-button color="primary" (click)="switchVideos()"><< Añadir Videos</button>
                     <div class="col-12 m-2">
                         <mat-divider></mat-divider>
                     </div>
@@ -62,7 +71,7 @@
                 <a mat-raised-button color="primary" routerLink="/main">Volver</a>
             </mat-card>
         </div>
-        <div class="col-12 col-md-4 m-2" *ngIf="addVid">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 m-2" *ngIf="addVid">
             <mat-card>
                 <div class="d-flex flex-column">
                     <h2>Videos</h2>
@@ -72,13 +81,13 @@
                           </button></li>
                     </ul>
                 </div>
-                <div>
-                    <mat-form-field appearance="fill">
+                <div class="d-flex flex-column justify-content-end">
+                    <mat-form-field appearance="fill" class="mr-2">
                         <mat-label>Título: </mat-label>
                         <input type="text" name="title" matInput [(ngModel)]="title" />
                         <mat-error>{{memberError}}</mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="mr-2">
                         <mat-label>Url: </mat-label>
                         <input type="text" name="videoUrl" matInput [(ngModel)]="videoUrl" />
                     </mat-form-field>

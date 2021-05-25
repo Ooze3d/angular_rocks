@@ -37,8 +37,8 @@ export class RockBandService implements OnInit {
         this.saveRockBandList();
     }
 
-    getRockBand(index:number) {
-        this.rockBand = this.rockBandList[index];
+    getRockBand(idband:string) {
+        this.rockBand = this.rockBandList.find(x => x.idband === idband);
         this.rockBandListener.next(this.rockBand);
     }
 

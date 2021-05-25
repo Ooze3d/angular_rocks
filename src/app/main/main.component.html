@@ -2,19 +2,28 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-5 m-2">
+        <div class="col-12 col-md-8 col-lg-6 m-2">
             <mat-card>
+                <div class="d-flex justify-content-between align-items-start">
+                    <img src="http://www.sinproblema.net/img/logo_rock.png" style="margin-top: -0.5em;"/>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Buscar </mat-label>
+                        <input type="text" name="busca" matInput [(ngModel)]="busca" (input)="searchBand()"/>
+                    </mat-form-field>
+                </div>
                 <mat-accordion>
-                    <mat-expansion-panel hideToggle *ngFor="let band of rockBandService.rockBandList; index as i">
+                    <mat-expansion-panel hideToggle *ngFor="let band of bandsList; index as i">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 <strong>{{ band.name }}</strong> <span style="margin-left: 0.5em;">({{band.year}})</span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <p>{{ band.history | slice:0:50 }}...</p>
-                        <button type="button" mat-raised-button color="primary">Ver</button>
+                        <button type="button" mat-raised-button color="primary"
+                            routerLink="/main/band/{{ band.idband }}">Ver</button>
                         <button type="button" mat-raised-button color="accent">Editar</button>
-                        <button type="button" mat-raised-button color="warn" (click)="rockBandService.deleteRockBand(i)">Borrar</button>
+                        <button type="button" mat-raised-button color="warn"
+                            (click)="rockBandService.deleteRockBand(i)">Borrar</button>
                     </mat-expansion-panel>
                 </mat-accordion>
             </mat-card>
