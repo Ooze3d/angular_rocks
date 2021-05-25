@@ -21,7 +21,7 @@
                         <p>{{ band.history | slice:0:50 }}...</p>
                         <button type="button" mat-raised-button color="primary"
                             routerLink="/main/band/{{ band.idband }}">Ver</button>
-                        <button type="button" mat-raised-button color="accent">Editar</button>
+                        <button type="button" mat-raised-button color="accent" routerLink="/main/band/{{ band.idband }}/edit">Editar</button>
                         <button type="button" mat-raised-button color="warn"
                             (click)="rockBandService.deleteRockBand(i)">Borrar</button>
                     </mat-expansion-panel>

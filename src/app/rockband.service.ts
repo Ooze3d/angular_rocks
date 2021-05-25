@@ -32,6 +32,12 @@ export class RockBandService implements OnInit {
         this.saveRockBandList();
     }
 
+    editRockBand(band:RockBand) {
+        let index:number = this.rockBandList.findIndex(x => x.idband == band.idband);
+        this.rockBandList[index] = band;
+        this.saveRockBandList();
+    }
+
     deleteRockBand(index:number) {
         this.rockBandList.splice(index, 1);
         this.saveRockBandList();

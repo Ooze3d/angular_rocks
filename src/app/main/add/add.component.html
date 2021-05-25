@@ -21,7 +21,7 @@
                 <form class="d-flex flex-column" #newBandForm="ngForm" (ngSubmit)="onNewBand(newBandForm)">
                     <mat-form-field appearance="fill">
                         <mat-label>Nombre de la banda: </mat-label>
-                        <input type="text" matInput name="name" ngModel required #name="ngModel" />
+                        <input color="accent" type="text" matInput name="name" ngModel required #name="ngModel" />
                         <mat-error *ngIf="name.invalid">Por favor, introduce el nombre de la banda</mat-error>
                     </mat-form-field>
                     <mat-card class="mb-2">

@@ -1,1 +1,88 @@
-<p>edit works!</p>
+<app-header></app-header>
+<div *ngIf="bandEdited" class="alert alert-success alert-dismissible fade show" role="alert">
+    ¡{{ nameEdited }}, guardada!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 m-2">
+            <mat-card>
+                <h2>Editar banda</h2>
+                <form class="d-flex flex-column" [formGroup]="editBandForm" (ngSubmit)="onBandUpdate()">
+                    <h1>{{ rockBandService.rockBand.name }}</h1>
+                    <mat-card class="mb-2">
+                        <div class="d-flex flex-column">
+                            <h2>Miembros</h2>
+                            <ul *ngFor="let member of rockBandService.rockBand.memberList; index as i">
+                                <li><strong>{{member.name}}</strong> ({{member.instrument}}) <button type="button" mat-icon-button color="warn" (click)="deleteMember(i)">
+                                    <mat-icon>close</mat-icon>
+                                  </button></li>
+                            </ul>
+                        </div>
+                        <form class="d-flex flex-column justify-content-end">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Nombre: </mat-label>
+                                <input type="text" name="memberName" matInput [(ngModel)]="memberName" /> <!--formControlName="memberName"-->
+                                <div class="mat-error small-error" *ngIf="memberError!=''">{{memberError}}</div>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Instrumento: </mat-label>
+                                <input type="text" name="instrument" matInput [(ngModel)]="instrument" /> <!--formControlName="instrument"-->
+                            </mat-form-field>
+                            <button type="button" mat-icon-button color="accent" (click)="addMember()"><mat-icon>add_circle_outline</mat-icon></button>
+                        </form>
+                    </mat-card>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Historia</mat-label>
+                        <textarea matInput required formControlName="history" rows="4"></textarea>
+                        <mat-error *ngIf="editBandForm.get('history').hasError('required')">Por favor, introduce la historia de la banda</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Año</mat-label>
+                        <input type="number" matInput required formControlName="year" min="1900" />
+                        <mat-error *ngIf="editBandForm.get('year').hasError('required')">Por favor, introduce el año de fundación de la banda</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Url de la foto: </mat-label>
+                        <input type="text" matInput formControlName="url" />
+                    </mat-form-field>
+                    <button *ngIf="!addVid" type="button" mat-raised-button color="primary" (click)="switchVideos()">Editar Videos >></button>
+                    <button *ngIf="addVid" type="button" mat-raised-button color="primary" (click)="switchVideos()"><< Editar Videos</button>
+                    <div class="col-12 m-2">
+                        <mat-divider></mat-divider>
+                    </div>
+                    <button mat-raised-button color="accent" type="submit">Guardar</button>
+                </form>
+                <hr />
+                <a mat-raised-button color="primary" routerLink="/main">Volver</a>
+            </mat-card>
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 m-2" *ngIf="addVid">
+            <mat-card>
+                <div class="d-flex flex-column">
+                    <h2>Videos</h2>
+                    <ul *ngFor="let video of rockBandService.rockBand.videos; index as i">
+                        <li>{{ video.title }}<button type="button" mat-icon-button color="warn" (click)="deleteVideo(i)">
+                            <mat-icon>close</mat-icon>
+                          </button></li>
+                    </ul>
+                </div>
+                <form class="d-flex flex-column justify-content-end">
+                    <mat-form-field appearance="fill" class="mr-2">
+                        <mat-label>Título: </mat-label>
+                        <input type="text" name="title" matInput [(ngModel)]="title" />
+                        <mat-error>{{memberError}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="mr-2">
+                        <mat-label>Url: </mat-label>
+                        <input type="text" name="videoUrl" matInput [(ngModel)]="videoUrl" />
+                    </mat-form-field>
+                    <button type="button" mat-icon-button color="accent" (click)="addVideo()"><mat-icon>add_circle_outline</mat-icon></button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

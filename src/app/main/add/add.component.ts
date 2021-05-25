@@ -88,7 +88,7 @@ export class AddComponent implements OnInit, AfterViewInit {
     else
       this.url = f.value.url;
     
-    let idband:string = String(f.value.name).replace(' ','').trim().toLowerCase().substr(0,4)+Math.round(Math.random()*899+100);
+    let idband:string = String(f.value.name).replace(' ','').replace('/','').trim().toLowerCase().substr(0,4)+Math.round(Math.random()*899+100);
     let newBand:RockBand = new RockBand(f.value.name, this.memberList, f.value.history, f.value.year, this.url, this.videoList);
     newBand.idband = idband;
     
