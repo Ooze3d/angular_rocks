@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/main/add">
+            <mat-icon>add</mat-icon>
+            <span>Añadir Banda</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>info</mat-icon>
+            <span>Sobre Angular Rocks</span>
+        </button>
+    </mat-menu>
+    <span><a class="band-name" routerLink="/main">Angular Rocks!</a></span>
+    <span class="example-spacer"></span>
+    <span class="greetings"> Bienvenido, <strong>Anonymous</strong></span>
+</mat-toolbar>

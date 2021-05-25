@@ -1,4 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #323232; }
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.greetings {
+    font-size: small;
+}
+
+.band-name {
+    text-decoration: none;
+    color: white;
+}
+
+.band-name:hover {
+    text-decoration: none;
+    color:violet;
+}
+
+.small-error {
+    font-size: 75%;
+}
+
+button[type="button"] {
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
