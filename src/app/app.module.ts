@@ -24,6 +24,7 @@ import { BandComponent } from './main/band/band.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { RockBandService } from './rockband.service';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RockBandService } from './rockband.service';
     EditComponent,
     BandComponent,
     PageNotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

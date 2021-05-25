@@ -25,12 +25,12 @@
                         <form class="d-flex flex-column justify-content-end">
                             <mat-form-field appearance="fill">
                                 <mat-label>Nombre: </mat-label>
-                                <input type="text" name="memberName" matInput [(ngModel)]="memberName" /> <!--formControlName="memberName"-->
+                                <input type="text" name="memberName" matInput [(ngModel)]="memberName" />
                                 <div class="mat-error small-error" *ngIf="memberError!=''">{{memberError}}</div>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Instrumento: </mat-label>
-                                <input type="text" name="instrument" matInput [(ngModel)]="instrument" /> <!--formControlName="instrument"-->
+                                <input type="text" name="instrument" matInput [(ngModel)]="instrument" />
                             </mat-form-field>
                             <button type="button" mat-icon-button color="accent" (click)="addMember()"><mat-icon>add_circle_outline</mat-icon></button>
                         </form>
