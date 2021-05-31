@@ -1,4 +1,17 @@
-# Rockbands
+# Angular Rocks!
+--------------------------------------------------
+
+Original project requirements:
+
+- Simple app in Angular with info about 70s rock bands
+- As USER, I want to see a list of all available rock bands, each with options to see details
+- As USER, I want to be able to access an individual page for each band with extra info about it
+- As USER, I want to be able to search for a band by name
+- As USER, I want to be able to delete a band from the list
+- As USER, I want to be able to add a band to the list
+- AS USER, I want to be able to edit a band from the list
+
+--------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
 
